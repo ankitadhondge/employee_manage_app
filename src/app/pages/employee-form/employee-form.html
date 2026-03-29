@@ -1,0 +1,97 @@
+<div class="container">
+  <h2 class="mb-4 text-center">Add New Employee</h2>
+
+  <!-- Form -->
+  <div class="form-section">
+    <form>
+      <div class="mb-3">
+        <label for="employeeId" class="form-label">Employee ID</label>
+        <input type="text" [(ngModel)]="newEmpobj.employeeId" name="employeeId" class="form-control" id="employeeId"
+          placeholder="Auto-generated" readonly>
+      </div>
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" [(ngModel)]="newEmpobj.name" name="name" class="form-control" id="name"
+          placeholder="Enter employee name">
+      </div>
+
+      <div class="mb-3">
+        <label for="contactNo" class="form-label">Contact No</label>
+        <input type="text" [(ngModel)]="newEmpobj.contactNo" name="contactNo" class="form-control" id="contactNo"
+          placeholder="10-digit contact number">
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" [(ngModel)]="newEmpobj.email" name="email" class="form-control" id="email"
+          placeholder="Enter email">
+      </div>
+
+      <div class="mb-3">
+        <label for="city" class="form-label">City</label>
+        <input type="text" [(ngModel)]="newEmpobj.city" name="city" class="form-control" id="city">
+      </div>
+
+      <div class="mb-3">
+        <label for="state" class="form-label">State</label>
+        <input type="text" [(ngModel)]="newEmpobj.state" name="state" class="form-control" id="state">
+      </div>
+
+      <div class="mb-3">
+        <label for="pincode" class="form-label">Pincode</label>
+        <input type="text" [(ngModel)]="newEmpobj.pincode" name="pincode" class="form-control" id="pincode"
+          placeholder="6-digit pincode">
+      </div>
+
+      <div class="mb-3">
+        <label for="altcontactNo" class="form-label">Alternate Contact No</label>
+        <input type="text" [(ngModel)]="newEmpobj.altcontactNo" name="altcontactNo" class="form-control"
+          id="altcontactNo" placeholder="10-digit alternate contact">
+      </div>
+
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" [(ngModel)]="newEmpobj.address" name="address" class="form-control" id="address">
+      </div>
+
+      <!-- <div class="mb-3">
+        <label for="designationId" class="form-label">Designation</label>
+        <select [(ngModel)]="newEmpobj.designationId" name="designationId" class="form-control" id="designationId">
+          <option *ngFor="let d of designationList" [value]="d.designationId">
+            {{ d.departmentName }} - {{ d.designationName }}
+          </option>
+        </select>
+      </div> -->
+
+      <!-- <div class="mb-3">
+        <label for="designationId" class="form-label">Designation</label>
+        <select [(ngModel)]="newDesignation.designationId"
+                name="designationId"
+                class="form-select"
+                id="designationId">
+            <option *ngFor="let dept of designationList" [value]="dept.designationId">
+            {{ dept.designationId }} - {{ dept.designationName }}
+            </option>
+          </select>
+      </div> -->
+
+
+      <div class="mb-3">
+        <label for="designationId" class="form-label">Designation ID</label>
+        <input type="number" [(ngModel)]="newEmpobj.designationId" name="designationId" class="form-control" id="designationId">
+      </div>
+
+      <div class="mb-3">
+        <label for="role" class="form-label">Role</label>
+        <input type="text" [(ngModel)]="newEmpobj.role" name="role" class="form-control" id="role">
+      </div>
+      <button (click)="onSaveEmployee()" type="button" class="btn btn-primary">Add Employee</button>
+    </form>
+  </div>
+
+  <!-- Success message -->
+  <!-- <div *ngIf="isAdded" class="alert alert-success mt-3">
+    Employee added successfully!
+  </div> -->
+</div>

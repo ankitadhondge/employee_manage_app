@@ -1,0 +1,67 @@
+
+  <div class="container">
+    <h2 class="mb-4 text-center">Department Management</h2>
+
+    <!-- Form -->
+    <div class="form-section">
+      <form>
+        <div class="mb-3">
+          <label for="departmentId" class="form-label">Department ID</label>
+          <input type="text" [(ngModel)]="newDeptobj.departmentId" name="departmentId" class="form-control" id="departmentId" placeholder="Auto-generated or enter manually">
+        </div>
+        <div class="mb-3">
+          <label for="departmentName" class="form-label">Department Name</label>
+          <input type="text" [(ngModel)]="newDeptobj.departmentName" name="departmentName" class="form-control" id="departmentName" placeholder="Enter department name">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" [(ngModel)]="newDeptobj.isActive" name="isActive" class="form-check-input" id="isActive">
+          <label class="form-check-label" for="isActive">Is Active</label>
+        </div>
+        @if (newDeptobj.departmentId ==0){
+          <button (click)="onSaveDept()" type="button" class="btn btn-primary">Add Department</button>
+        }
+        @else{
+          <button (click)="onUpdateDept()" type="button" class="btn btn-primary">Update</button>
+        }
+        
+      </form>
+    </div>
+
+    <!-- Table -->
+    <div class="table-section">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Department ID</th>
+            <th>Department Name</th>
+            <th>Is Active</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let item of deptlist; let i = index">
+              <td>{{item.departmentId}}</td>
+              <td>{{item.departmentName}}</td>
+            <td>{{item.isActive ? 'Yes' : 'No'}}</td>
+            <td>
+              <button class="btn btn-sm btn-warning">Edit</button>
+              <button class="btn btn-sm btn-success">Update</button>
+            <button class="btn btn-sm btn-danger">Delete</button>
+            </td>
+            </tr> -->
+           @for (item of deptlist; track item.departmentId) {
+            <tr>
+            <td>{{ item.departmentId }}</td>
+            <td>{{ item.departmentName }}</td>
+            <td>{{ item.isActive ? 'Yes' : 'No' }}</td>
+            <td>
+               <!-- <button class="btn btn-sm btn-warning">Edit</button> -->
+               <button (click)="onEditDept(item)" class="btn btn-sm btn-success">Update</button>
+               <button (click)="onDeleteDept(item.departmentId)" class="btn btn-sm btn-danger">Delete</button>
+            </td>
+            </tr>
+        } 
+        </tbody>
+      </table>
+    </div>
+  </div>

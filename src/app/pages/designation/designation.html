@@ -1,0 +1,67 @@
+<div class="container">
+  <h2 class="mb-4 text-center">Designation Management</h2>
+
+  <!-- Form -->
+  <div class="form-section">
+    <form>
+      <div class="mb-3">
+        <label for="designationId" class="form-label">Designation ID</label>
+        <input type="text" [(ngModel)]="newDesignation.designationId" name="designationId"
+               class="form-control" id="designationId" placeholder="Auto-generated or enter manually">
+      </div>
+      <div class="mb-3">
+        <label for="departmentId" class="form-label">Department</label>
+        <select [(ngModel)]="newDesignation.departmentId"
+                name="departmentId"
+                class="form-select"
+                id="departmentId">
+            <option *ngFor="let dept of deptlist" [value]="dept.departmentId">
+            {{ dept.departmentId }} - {{ dept.departmentName }}
+            </option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="designationName" class="form-label">Designation Name</label>
+        <input type="text" [(ngModel)]="newDesignation.designationName" name="designationName"
+               class="form-control" id="designationName" placeholder="Enter designation name">
+      </div>
+
+      <!-- Switch between Add / Update -->
+      @if (newDesignation.designationId ==0){
+          <button (click)="onSaveDesignation()" type="button" class="btn btn-primary">Add Designation</button>
+        }
+        @else{
+          <button (click)="onUpdateDesignation(newDesignation)" type="button" class="btn btn-primary">Update</button>
+        }
+    </form>
+  </div>
+
+  <!-- Table -->
+  <div class="table-section mt-4">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Designation ID</th>
+          <th>DepartmentId</th>
+          <th>Designation Name</th>
+          <th>Actions</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+         @for (item of designationList; track item.designationId) {
+        <tr>
+           <td>{{ item.designationId }}</td>
+           <td>{{ item.departmentId }} - {{ getDepartmentName(item.departmentId) }} </td>
+           <td>{{ item.designationName }}</td>
+          <td>
+            <button (click)="onEditDesignation(item)" class="btn btn-sm btn-warning">Update</button>
+            <button (click)="onDeleteDesignation(item.designationId)" class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+    }
+      </tbody>
+    </table>
+  </div>
+</div>
